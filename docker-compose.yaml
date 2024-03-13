@@ -17,7 +17,7 @@ services:
     build:
       context: .
       dockerfile: Dockerfile.dev
-    image: agro
+    image: fut
     restart: always
     command: bash -c "npx prisma migrate dev --name init && npx prisma migrate deploy && npx prisma db seed && npm run start:prod"
     environment:
@@ -33,6 +33,6 @@ services:
     depends_on:
       - postgres
     ports:
-      - "5050:5050"
+      - "3000:3000"
     links:
       - postgres
