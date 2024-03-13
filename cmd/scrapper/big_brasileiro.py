@@ -1,10 +1,11 @@
 import requests
 from bs4 import BeautifulSoup
+import json
 
 url = 'https://www.futebolinterior.com.br/campeonato/brasileirao-serie-a-2024/'
 
-def create_file(text: str, page_name: str):
-    with open(f'{page_name}.html', 'w') as file:
+def create_file(text: str, page_name: str, extension: str):
+    with open(f'{page_name}.{extension}', 'w') as file:
         file.write(text)
 
 def download_page(url):
@@ -18,12 +19,12 @@ def get_data():
     soup = BeautifulSoup(str(response), 'html.parser')
     
     table = soup.find('table', class_='table-classification--expansive')
-    create_file(str(table), 'table')
+    create_file(str(table), 'table', 'html')
     
     rounds = soup.find('div', class_='rounds')
     # create_file(str(rounds), 'rounds')
     print(get_rounds(rounds))
-    
+    print(get_table(table))
     
     #create_file(str(infos))
         
@@ -36,7 +37,7 @@ def get_rounds(rounds) -> list:
     for round in rounds:
         info.append(round)
         
-    create_file(str(info), 'rounds')
+    create_file(str(info), 'rounds', 'html')
     for i in range(len(info)):
         dates.append(info[i].find('time').text)
         info[i] = info[i].find_all('figcaption')
@@ -51,20 +52,28 @@ def get_rounds(rounds) -> list:
             round_teams.append(y.text)
     
     matches = []
-    for i in range(len(dates)):
+    for i in range(len(round_teams)):
         match = {
-            'date': dates[i],
-            'teams': f'{round_teams[i]} x {round_teams[i+1]}'
+            'date': utils_date(dates[int(i / 2)]),
+            'teams': f'{round_teams[i - 1]} x {round_teams[i]}'
         }
-        i+1
         matches.append(match)
-     
+        
+    del matches[0::2]
+    jsonify = json.dumps(matches, indent=4)
+    create_file(str(jsonify), 'matches', 'json')
     return matches
 
-def get_teams():
+def get_table(table) -> list:
     pass
         
+
+def utils_date(date: str) -> str:
+    i = date.split('-')
+    if i[1] == '00h00':
+        i[1] = 'A definir'
         
+    return f'{i[0]} - {i[1]}'      
         
         
         
