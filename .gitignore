@@ -2,6 +2,14 @@
 /dist
 /node_modules
 
+# Snyk
+snyk-linux
+snyk-macos
+snyk-win
+
+# Scrapper
+__pycache__
+
 # Logs
 logs
 *.log
@@ -34,6 +42,5 @@ lerna-debug.log*
 !.vscode/launch.json
 !.vscode/extensions.json
 
-matches.json
 *.html
 .env
