@@ -1,6 +1,8 @@
 import json
+from sqlalchemy import Column, Integer, String, Date, Base
 
-class Match:
+class Match(Base):
+  __tablename__ = 'matches'
   def __init__(self, date, home, away, params):
     self.date = date
     self.home = home
@@ -20,7 +22,6 @@ class Match:
         home = match['teams'].split('x')[0].strip()
         away = match['teams'].split('x')[1].strip()
         
-        print(match)
         matches.append(Match(date, home, away, {}))
         
         

@@ -1,6 +1,6 @@
 import requests
-from bs4 import BeautifulSoup
 import json
+from bs4 import BeautifulSoup
 
 url = 'https://www.futebolinterior.com.br/campeonato/brasileirao-serie-a-2024/'
 
@@ -10,7 +10,6 @@ def create_file(text: str, page_name: str, extension: str):
 
 def download_page(url):
     response = requests.get(url)
-    #create_file(response.text)
     return response.text
 
 def get_data():
@@ -19,14 +18,11 @@ def get_data():
     soup = BeautifulSoup(str(response), 'html.parser')
     
     table = soup.find('table', class_='table-classification--expansive')
-    create_file(str(table), 'table', 'html')
-    
-    rounds = soup.find('div', class_='rounds')
-    # create_file(str(rounds), 'rounds')
-    print(get_rounds(rounds))
     print(get_table(table))
     
-    #create_file(str(infos))
+    rounds = soup.find('div', class_='rounds')
+    print(get_rounds(rounds))
+    
         
         
 def get_rounds(rounds) -> list:
@@ -37,7 +33,6 @@ def get_rounds(rounds) -> list:
     for round in rounds:
         info.append(round)
         
-    create_file(str(info), 'rounds', 'html')
     for i in range(len(info)):
         dates.append(info[i].find('time').text)
         info[i] = info[i].find_all('figcaption')
