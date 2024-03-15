@@ -1,0 +1,38 @@
+version: '3.8'
+services:
+  postgres:
+    container_name: postgress-container
+    image: postgres:13.5
+    restart: always
+    environment:
+      - POSTGRES_DB=${POSTGRES_DATABASE}
+      - POSTGRES_USER=${POSTGRES_USER}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+    volumes:
+      - ./data:/data/db
+    ports:
+      - '5433:5432'
+  api:
+    container_name: api-container
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    image: fut
+    restart: always
+    command: bash -c "npx prisma migrate dev --name init && npx prisma migrate deploy && npx prisma db seed && npm run start:prod"
+    environment:
+      - PORT=${PORT}
+      - POSTGRES_URL=${POSTGRES_URL}
+      - POSTGRES_PRISMA_URL=${POSTGRES_PRISMA_URL}
+      - POSTGRES_URL_NON_POOLING=${POSTGRES_URL_NON_POOLING}
+      - POSTGRES_USER=${POSTGRES_USER}
+      - POSTGRES_HOST=${POSTGRES_HOST}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+      - POSTGRES_DATABASE=${POSTGRES_DATABASE}
+      - JWT_SECRET=${JWT_SECRET}
+    depends_on:
+      - postgres
+    ports:
+      - "3000:3000"
+    links:
+      - postgres
