@@ -43,10 +43,4 @@ lerna-debug.log*
 !.vscode/extensions.json
 
 .env
-__pycache__/
-
-
-# Snyk
-snyk-linux
-snyk-macos
-snyk-win
+*.html
