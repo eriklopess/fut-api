@@ -42,7 +42,6 @@ lerna-debug.log*
 !.vscode/launch.json
 !.vscode/extensions.json
 
-<<<<<<< HEAD
 .env
 __pycache__/
 
@@ -51,7 +50,3 @@ __pycache__/
 snyk-linux
 snyk-macos
 snyk-win
-=======
-*.html
-.env
->>>>>>> c4ba4006b28fba067575219529904678a823a25f

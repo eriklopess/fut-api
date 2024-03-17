@@ -12,3 +12,10 @@ datasource db {
   provider = "postgresql"
   url      = env("POSTGRES_PRISMA_URL")
 }
+
+model MatchModel {
+  id   String   @id @default(uuid())
+  at   DateTime
+  home String
+  away String
+}
