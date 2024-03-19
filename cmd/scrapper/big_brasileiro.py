@@ -25,6 +25,7 @@ def get_data():
         
         
 def get_rounds(rounds) -> list:
+    rodadas = {}
     dates = []
     info = []
     round_teams = []
@@ -50,14 +51,18 @@ def get_rounds(rounds) -> list:
         match = {
             'id': str(uuid.uuid4()),
             'date': utils_date(dates[int(i / 2)]),
-            'teams': f'{round_teams[i - 1]} x {round_teams[i]}'
+            'home': round_teams[i - 1],
+            'away': round_teams[i]
         }
         matches.append(match)
         
     del matches[0::2]
-    jsonify = json.dumps(matches, indent=4)
     
-    create_file(str(jsonify), f'rodada_{today()}', 'json')
+    rodadas['generatedAt'] = today()
+    rodadas['rounds'] = matches
+    jsonify = json.dumps(rodadas, indent=4)
+    
+    create_file(str(jsonify), 'rodada', 'json')
     return matches
 
 def get_table(table) -> list:
@@ -77,7 +82,7 @@ def get_table(table) -> list:
         teams[k] = list(filter(None, teams[k]))
         
     for l in range(len(teams)):
-        if len(teams[l]) is 11:
+        if len(teams[l]) == 11:
             teams[l] = {
                 'position': teams[l][0],
                 'team': teams[l][1],
@@ -108,10 +113,12 @@ def get_table(table) -> list:
                 # 'percentage': teams[l][11],
                 # 'last_games': teams[l][12]
             }
+            
+    tabela['generatedAt'] = today()        
     tabela['tabela'] = teams
     jsonify = json.dumps(tabela, indent=4)
     
-    create_file(str(jsonify), f'tabela_{today()}', 'json')
+    create_file(str(jsonify), 'tabela', 'json')
     return tabela
         
 

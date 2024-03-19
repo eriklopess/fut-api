@@ -8,3 +8,10 @@ def create_file(text: str, page_name: str, extension: str):
 
 def today():
     return datetime.date.today().strftime('%d-%m-%Y')
+
+def delete_past_files():
+    cwd = os.getcwd()
+    files = os.listdir(f'{cwd}/data')
+    for file in files:
+        os.remove(f'{cwd}/data/{file}')
+        

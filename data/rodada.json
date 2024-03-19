@@ -1,0 +1,65 @@
+{
+    "generatedAt": "17-03-2024",
+    "rounds": [
+        {
+            "id": "68abdf4b-be26-4e32-b9e1-616e848ca9fb",
+            "date": "13/04/2024 - A definir",
+            "home": "Crici\u00fama",
+            "away": "Juventude"
+        },
+        {
+            "id": "e2b0d819-7847-4cc3-943e-b18184c231eb",
+            "date": "13/04/2024 - A definir",
+            "home": "Atl\u00e9tico-GO",
+            "away": "Flamengo"
+        },
+        {
+            "id": "927e0e34-e90a-4691-9b8f-9de4228631a6",
+            "date": "13/04/2024 - A definir",
+            "home": "Athletico",
+            "away": "Cuiab\u00e1-MT"
+        },
+        {
+            "id": "a28a6eeb-c795-4a99-abbf-2cd6680a892d",
+            "date": "13/04/2024 - A definir",
+            "home": "S\u00e3o Paulo",
+            "away": "Fortaleza"
+        },
+        {
+            "id": "5309918d-232a-43dc-9c27-1d04adfa1ec4",
+            "date": "13/04/2024 - A definir",
+            "home": "Corinthians",
+            "away": "Atl\u00e9tico-MG"
+        },
+        {
+            "id": "f4ce2eb9-bb84-4c68-ba20-c507cad9b672",
+            "date": "13/04/2024 - A definir",
+            "home": "Vasco",
+            "away": "Gr\u00eamio"
+        },
+        {
+            "id": "1d218043-6166-470a-bc1a-44848ac49db5",
+            "date": "13/04/2024 - A definir",
+            "home": "Fluminense",
+            "away": "Red Bull Bragantino"
+        },
+        {
+            "id": "c5085427-42b1-46d2-9f2a-438bf92a85c8",
+            "date": "13/04/2024 - A definir",
+            "home": "Vit\u00f3ria-BA",
+            "away": "Palmeiras"
+        },
+        {
+            "id": "a92a8ac3-6731-4e69-802a-3dc3b7a0777c",
+            "date": "13/04/2024 - A definir",
+            "home": "Cruzeiro",
+            "away": "Botafogo"
+        },
+        {
+            "id": "cf191c64-3a3a-4e6a-aaaf-152f05707865",
+            "date": "13/04/2024 - A definir",
+            "home": "Internacional",
+            "away": "Bahia"
+        }
+    ]
+}
